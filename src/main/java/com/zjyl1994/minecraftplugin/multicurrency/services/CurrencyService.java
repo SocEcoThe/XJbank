@@ -83,6 +83,10 @@ public class CurrencyService {
                 }
                 connection.commit();
             } catch (SQLException e) {
+                System.err.println("SQL Exception occurred: " + e.getMessage());
+                System.err.println("SQL State: " + e.getSQLState());
+                System.err.println("Error Code: " + e.getErrorCode());
+                e.printStackTrace();
                 connection.rollback();
                 throw e;
             }

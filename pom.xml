@@ -53,7 +53,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>[1.19.3-R0.1-SNAPSHOT,)</version>
+            <version>[1.18.2-R0.1-SNAPSHOT,)</version>
             <scope>provided</scope>
         </dependency>
         <!--This adds the Bukkit API artifact to the build -->
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.28</version>
+            <version>[8.0.11,)</version>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
@@ -76,7 +76,6 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>3.4.2</version>
-            <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
         <dependency>
@@ -85,12 +84,5 @@
             <version>1.13</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.xjcraft</groupId>
-            <artifactId>SimpleSpigot</artifactId>
-            <version>LATEST</version>
-            <scope>provided</scope>
-        </dependency>
-
     </dependencies>
 </project>
