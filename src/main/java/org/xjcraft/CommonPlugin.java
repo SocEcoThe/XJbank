@@ -1,7 +1,6 @@
 package org.xjcraft;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import javax.sql.DataSource;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariConfig;
 import java.io.File;
