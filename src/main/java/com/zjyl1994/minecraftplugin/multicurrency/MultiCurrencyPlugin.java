@@ -32,7 +32,7 @@ public class MultiCurrencyPlugin extends CommonPlugin {
         this.random = new Random(System.currentTimeMillis());
         this.saveDefaultConfig();
 
-        hikari = getDataSource("MultiCurrency");
+        hikari = getDataSource();
 //        hikari.setDataSourceClassName(this.getConfig().getString("datasource.driver"));
 //        hikari.addDataSourceProperty("serverName", this.getConfig().getString("datasource.server"));
 //        hikari.addDataSourceProperty("port", this.getConfig().getInt("datasource.port"));
