@@ -6,9 +6,8 @@
 
 package com.zjyl1994.minecraftplugin.multicurrency;
 
-import org.xjcraft.CommonPlugin;
+import com.zaxxer.hikari.HikariDataSource;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ import java.util.Random;
  */
 public class MultiCurrencyPlugin extends CommonPlugin {
     private static MultiCurrencyPlugin instance;
-    private DataSource hikari;
+    private HikariDataSource hikari;
     private Random random;
 
     @Override
@@ -33,17 +32,7 @@ public class MultiCurrencyPlugin extends CommonPlugin {
         this.saveDefaultConfig();
 
         hikari = getDataSource();
-//        hikari.setDataSourceClassName(this.getConfig().getString("datasource.driver"));
-//        hikari.addDataSourceProperty("serverName", this.getConfig().getString("datasource.server"));
-//        hikari.addDataSourceProperty("port", this.getConfig().getInt("datasource.port"));
-//        hikari.addDataSourceProperty("databaseName", this.getConfig().getString("datasource.database"));
-//        hikari.addDataSourceProperty("user", this.getConfig().getString("datasource.username"));
-//        hikari.addDataSourceProperty("password", this.getConfig().getString("datasource.password"));
-//        hikari.setMaxLifetime(this.getConfig().getInt("datasource.hikari.maxLifetime"));
-//        hikari.setMaximumPoolSize(this.getConfig().getInt("datasource.hikari.maximumPoolSize"));
-//        hikari.setAutoCommit(false);
-//        hikari.addDataSourceProperty("useUnicode", "true");
-//        hikari.addDataSourceProperty("characterEncoding", "utf8");
+
         try (Connection connection = hikari.getConnection()) {
             String[] create = {"CREATE TABLE IF NOT EXISTS `mc_account` (`id` INT (11) NOT NULL AUTO_INCREMENT,`username` VARCHAR (50) NOT NULL COMMENT '存款人',`code` CHAR (3) NOT NULL COMMENT '货币代码',`balance` DECIMAL (16,6) NOT NULL DEFAULT 0.000000 COMMENT '账户余额',PRIMARY KEY (`id`),UNIQUE KEY `username_code` (`username`,`code`)) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='存款账户表';",
                     "CREATE TABLE IF NOT EXISTS `mc_currency` (`id` INT (11) NOT NULL AUTO_INCREMENT,`code` CHAR (3) NOT NULL COMMENT '货币代码',`owner` VARCHAR (50) NOT NULL COMMENT '货币发行人',`name` VARCHAR (50) NOT NULL COMMENT '货币常用名',`total` DECIMAL (16,6) NOT NULL DEFAULT 0.000000 COMMENT '货币发行总量',PRIMARY KEY (`id`),UNIQUE KEY `code` (`code`)) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='货币表';",
@@ -63,14 +52,13 @@ public class MultiCurrencyPlugin extends CommonPlugin {
 
     @Override
     public void onDisable() {
-
     }
 
     public static MultiCurrencyPlugin getInstance() {
         return instance;
     }
 
-    public DataSource getHikari() {
+    public HikariDataSource getHikari() {
         return hikari;
     }
 
