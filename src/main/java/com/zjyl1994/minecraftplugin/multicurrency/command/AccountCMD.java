@@ -48,13 +48,13 @@ public class AccountCMD {
             return;
         }
         Boolean payToAccountIsVirtual = payTo.startsWith("$");
-        if (!payToAccountIsVirtual && !p.isOp() && !currencyCode.equalsIgnoreCase("GOV")) {
-            Player payToPlayer = Bukkit.getServer().getPlayerExact(payTo);
-            if (payToPlayer == null) {
-                p.sendMessage("收款玩家" + payTo + "不在线");
-                return;
-            }
-        }
+        // if (!payToAccountIsVirtual && !p.isOp() && !currencyCode.equalsIgnoreCase("GOV")) {
+        //     Player payToPlayer = Bukkit.getServer().getPlayerExact(payTo);
+        //     if (payToPlayer == null) {
+        //         p.sendMessage("收款玩家" + payTo + "不在线");
+        //         return;
+        //     }
+        // }
         Bukkit.getScheduler().runTaskAsynchronously(MultiCurrencyPlugin.getInstance(), () -> {
             OperateResult transferResult = BankService.transferTo(p.getName(), payTo, currencyCode.toUpperCase(), roundAmount, TxTypeEnum.ELECTRONIC_TRANSFER_OUT, "");
             Bukkit.getScheduler().runTask(MultiCurrencyPlugin.getInstance(), new Runnable() {

@@ -43,7 +43,7 @@ public class CheckUtil {
         // 书的数据
         var meta = (BookMeta) itemStack.getItemMeta();
         // 滤掉作者不对的
-        if (!"XJCraft金融管理局".equals(meta.getAuthor())) {
+        if (!"科服货币技术委员会".equals(meta.getAuthor())) {
             return Optional.empty();
         }
         // 滤掉不是破旧不堪的
@@ -96,7 +96,7 @@ public class CheckUtil {
         // 生成可视书页内容
         List<String> content = new ArrayList<>();
         StringBuilder viewableBuilder = new StringBuilder();
-        viewableBuilder.append("XJCraft 电子现金支票\n=====\n\n编号:");
+        viewableBuilder.append("电子现金支票\n=====\n\n编号:");
         viewableBuilder.append(checkId);
         viewableBuilder.append("\n币种:");
         viewableBuilder.append(ce.getCurrencyCode());
@@ -108,7 +108,7 @@ public class CheckUtil {
         viewableBuilder.append(dateTimeStr, 0, 10);
         viewableBuilder.append("\n时间:");
         viewableBuilder.append(dateTimeStr, 11, 19);
-        viewableBuilder.append("\n\n§8§nXJCraft金融管理局监制\n§7§k");
+        viewableBuilder.append("\n\n§8§n科服货币技术委员会监制\n§7§k");
         viewableBuilder.append(checkHash);
         content.add(viewableBuilder.toString());
         // 生成机读页面内容
@@ -131,7 +131,7 @@ public class CheckUtil {
         BookMeta meta = (BookMeta) book.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_PURPLE + moneyString);
         meta.setTitle(moneyString);
-        meta.setAuthor("XJCraft金融管理局");
+        meta.setAuthor("科服货币技术委员会");
         meta.setPages(content);
         meta.setGeneration(BookMeta.Generation.TATTERED);
         book.setItemMeta(meta);

@@ -156,7 +156,7 @@ public class ATMService implements ConversationAbandonedListener {
 
         @Override
         public String getPromptText(ConversationContext context) {
-            return ChatColor.GOLD + "\n欢迎使用XJCraft金融管理局ATM机\n您可随时输入\"exit\"退出ATM机！\n10秒无操作或者走太远都会自动退出，请及时操作！";
+            return ChatColor.GOLD + "\n欢迎使用ATM机\n您可随时输入\"exit\"退出ATM机！\n10秒无操作或者走太远都会自动退出，请及时操作！";
         }
 
         @Override
