@@ -1,5 +1,7 @@
 # XJCraft 多货币插件使用说明书
 
+改自 https://github.com/XJcraft/XJBank
+
 和原版相比，修改了缺失的xjcraft依赖
 
 ## 功能
